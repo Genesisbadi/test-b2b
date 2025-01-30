@@ -16,9 +16,24 @@ export default function AppMeta({ tenantDetails }) {
       themeColor: "#68192F",
     },
     2: {
-      applicationName: "discovery_suites",
+      applicationName: "Discovery Suites",
       iconPrefix: "ds",
       themeColor: "#8FA6AD",
+    },
+    3: {
+      applicationName: "Discovery Boracay",
+      iconPrefix: "db",
+      themeColor: "#F2F3F4",
+    },
+    4: {
+      applicationName: "Discovery Coron",
+      iconPrefix: "dc",
+      themeColor: "#F2F3F4",
+    },
+    5: {
+      applicationName: "Discovery Primea",
+      iconPrefix: "dp",
+      themeColor: "#ffffff",
     },
   };
   const { iconPrefix, themeColor } = micrositeConfig[micrositeId] || {};
@@ -28,10 +43,21 @@ export default function AppMeta({ tenantDetails }) {
   const Icon256 = iconPrefix ? iconPath(iconPrefix, 256) : "";
   const Icon384 = iconPrefix ? iconPath(iconPrefix, 384) : "";
 
+  const containsDev =
+    getDomainUrl().includes("pages.dev") ||
+    getDomainUrl().includes("localhost");
+
   return (
     <Head>
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content={themeColor} />
+
+      {containsDev && (
+        <meta
+          name="robots"
+          content="noindex, nofollow, noarchive, nosnippet, noodp, noydir"
+        />
+      )}
       <meta
         name="apple-mobile-web-app-title"
         content={
