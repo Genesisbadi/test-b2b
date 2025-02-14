@@ -144,6 +144,8 @@ export default function CarouselGallery2({ blockId, block }) {
             <h2
               className={`text-primary text-[25px] text-center tracking-[1px] px-[20px] mb-[20px] ${
                 process.env.NEXT_PUBLIC_TEMPLATE == 1 ? "font-tenor" : " "
+              } ${
+                process.env.NEXT_PUBLIC_MICROSITE_ID == 7 ? "font-effra" : ""
               }`}
             >
               {title}
@@ -173,7 +175,9 @@ export default function CarouselGallery2({ blockId, block }) {
                           className="w-full h-full object-cover group-hover:scale-[1.2] transition duration-500"
                         />
                         <div
-                          class="absolute bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-black p-[50px] pb-[20px] duration-700 transition-all uppercase text-center font-brandon text-white text-[18px] tracking-[1.44px] leading-[25px] duration-500 transition-all "
+                          class={`absolute bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-black p-[50px] pb-[20px] duration-700 transition-all ${
+                            item?.uppercase === "uppercase" ? "uppercase" : ""
+                          } text-center font-brandon text-white text-[18px] tracking-[1.44px] leading-[25px] duration-500 transition-all`}
                           dangerouslySetInnerHTML={{ __html: item?.caption }}
                         />
                       </div>

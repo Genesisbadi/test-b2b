@@ -133,17 +133,23 @@ export default function HeroGridRepeater({ block, mediaHandler }) {
                 />
 
                 <div
-                  className={`px-[20px] lg:px-[60px] flex flex-col grow py-[30px] text-secondary min-h-[395px]`}
+                  className={`px-[20px] lg:px-[60px] flex flex-col grow py-[30px] text-secondary ${
+                    item?.description ? "min-h-[395px]" : ""
+                  }`}
                 >
                   <h2
                     className={`${
                       process.env.NEXT_PUBLIC_TEMPLATE == 1 ? "font-tenor" : ""
+                    } ${
+                      process.env.NEXT_PUBLIC_MICROSITE_ID == 7
+                        ? "font-effra"
+                        : ""
                     } hidden md:block text-center mb-[30px] text-[18px] sm:text-[20px] lg:text-[25px]`}
                   >
                     {item.title}
                   </h2>
 
-                  {item.description && (
+                  {item?.description && (
                     <div
                       className={`text-[14px] mb-[30px] grow leading-[21px]`}
                       dangerouslySetInnerHTML={{
@@ -200,6 +206,10 @@ export default function HeroGridRepeater({ block, mediaHandler }) {
                 <h2
                   className={`${
                     process.env.NEXT_PUBLIC_TEMPLATE == 1 ? "font-tenor" : ""
+                  } ${
+                    process.env.NEXT_PUBLIC_MICROSITE_ID == 7
+                      ? "font-effra"
+                      : ""
                   } hidden md:block text-center mb-[30px] text-[18px] sm:text-[20px] lg:text-[25px]`}
                 >
                   {item.title}
