@@ -85,17 +85,28 @@ export default function FooterNewsletter() {
       <section className="footer-newsletter md:py-[40px]">
         {isModalShow && <NewsletterPopup />}
         <h2
-          className={`hidden md:block text-center text-primary tracking-[1px] text-[25px] mb-[30px] ${
+          className={`hidden md:block text-center tracking-[1px] text-[25px] mb-[30px] ${
             process.env.NEXT_PUBLIC_TEMPLATE == 1 ? "font-tenor" : " "
-          } ${process.env.NEXT_PUBLIC_MICROSITE_ID == 7 ? "font-effra" : ""}`}
+          } ${
+            process.env.NEXT_PUBLIC_MICROSITE_ID == 7
+              ? "font-effra text-[#05A6D0]"
+              : "text-primary"
+          }`}
         >
           {title}
         </h2>
 
         <div className="container md:!max-w-[550px]">
-          <p className="text-[#555] md:text-center">
-            Enter your email address below to receive our newsletter.
-          </p>
+          {process.env.NEXT_PUBLIC_MICROSITE_ID == 7 ? (
+            <p className="text-[#555] md:text-center">
+              Pop your email below to get in on the action—unlock early access,
+              exclusive perks, and all the buzz-worthy updates.
+            </p>
+          ) : (
+            <p className="text-[#555] md:text-center">
+              Enter your email address below to receive our newsletter.
+            </p>
+          )}
 
           <form
             id="newsletter-form"
