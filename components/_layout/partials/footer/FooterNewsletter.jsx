@@ -98,7 +98,7 @@ export default function FooterNewsletter() {
 
         <div className="container md:!max-w-[550px]">
           {process.env.NEXT_PUBLIC_MICROSITE_ID == 7 ? (
-            <p className="text-[#555] md:text-center">
+            <p className="text-[#555] md:text-center font-circular">
               Pop your email below to get in on the action—unlock early access,
               exclusive perks, and all the buzz-worthy updates.
             </p>
@@ -124,7 +124,11 @@ export default function FooterNewsletter() {
               />
               <button
                 type="submit"
-                className={`w-full uppercase group flex items-center justify-center text-uppercase sm:w-[150px] text-secondary border-secondary border px-[15px] py-[15px] h-[60px] hover:bg-secondary hover:text-[#fff] transition-all duration-300 ease-in-out ${
+                className={`w-full uppercase group flex items-center justify-center text-uppercase sm:w-[150px] text-secondary border-secondary border px-[15px] py-[15px] h-[60px] ${
+                  process.env.NEXT_PUBLIC_MICROSITE_ID == 7
+                    ? "hover:bg-[#d51a69] hover:border-[#d51a69] hover:text-[#fff]"
+                    : "hover:bg-secondary hover:text-[#fff]"
+                } transition-all duration-300 ease-in-out ${
                   isSending
                     ? "cursor-not-allowed opacity-[.5]"
                     : "cursor-pointer"

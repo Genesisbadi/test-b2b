@@ -1,3 +1,4 @@
+import body from "@/styles/body.module.css";
 export default function Introduction({ block }) {
   const { description, title } = block.main;
   return (
@@ -5,6 +6,8 @@ export default function Introduction({ block }) {
       <section
         className={`w-full flex justify-center bg-primary ${
           process.env.NEXT_PUBLIC_MICROSITE_ID == 6 ? "pt-[80px]" : "pt-[40px]"
+        } ${
+          process.env.NEXT_PUBLIC_MICROSITE_ID == 8 ? "pt-[80px]" : "pt-[40px]"
         } pb-[80px] px-[15px]`}
       >
         <div className="w-full max-w-[957px] ">
@@ -32,6 +35,8 @@ export default function Introduction({ block }) {
               process.env.NEXT_PUBLIC_TEMPLATE == 1
                 ? "text-[#d4bebe]"
                 : "text-white"
+            } ${
+              process.env.NEXT_PUBLIC_MICROSITE_ID == 7 ? body.kipkin : ""
             } text-[14px] leading-[25px] max-w-[957px]`}
           />
         </div>

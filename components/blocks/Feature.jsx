@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import body from "@/styles/body.module.css";
 
 export default function Feature({ block }) {
   const SectionAccordion = dynamic(() =>
@@ -14,6 +15,7 @@ export default function Feature({ block }) {
     video_link,
     image,
     button_label,
+    bg_color,
   } = block.main;
   let videoUrl;
 
@@ -70,6 +72,9 @@ export default function Feature({ block }) {
           )}
         </div>
         <div
+          style={{
+            backgroundColor: bg_color,
+          }}
           className={`${
             process.env.NEXT_PUBLIC_MICROSITE_ID == 5
               ? "bg-[#202020]"
@@ -98,7 +103,9 @@ export default function Feature({ block }) {
               process.env.NEXT_PUBLIC_TEMPLATE == 1
                 ? "text-[#d4bebe]"
                 : "text-white"
-            }   text-[14px] mb-[15px] leading-[21px]`}
+            } ${
+              process.env.NEXT_PUBLIC_MICROSITE_ID == 7 ? body.kipkin : ""
+            } text-[14px] mb-[15px] leading-[21px]`}
             dangerouslySetInnerHTML={{ __html: description }}
           />
 
