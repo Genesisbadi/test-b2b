@@ -61,8 +61,6 @@ export default function Block({ block }) {
       });
   };
 
-  console.log(selectedCategory?.value, "testa");
-
   useEffect(() => {
     if (router.isReady) {
       const categoryId = router.query.category;
