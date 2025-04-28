@@ -120,6 +120,7 @@ export default function Block({ block }) {
     label: selectedCategory?.label,
     value: selectedCategory?.value,
   });
+  
 
   return (
     <section className="bg-[#F1F1F1] pb-[30px]">
