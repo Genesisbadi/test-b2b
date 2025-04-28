@@ -61,6 +61,29 @@ export default function Block({ block }) {
       });
   };
 
+  console.log(selectedCategory?.value, "testa");
+
+  useEffect(() => {
+    if (router.isReady) {
+      const categoryId = router.query.category;
+      if (categoryId) {
+        const foundCategory = offersCategories.find(
+          (item) => item.id === categoryId
+        );
+        if (foundCategory) {
+          setSelectedCategory({
+            label: foundCategory.name,
+            value: foundCategory.id,
+          });
+        } else {
+          setSelectedCategory({ label: "All", value: "" });
+        }
+      } else {
+        setSelectedCategory({ label: "All", value: "" });
+      }
+    }
+  }, [router.isReady, router]);
+
   const getOffers = useCallback(async () => {
     setLoading(true);
     try {
@@ -84,24 +107,13 @@ export default function Block({ block }) {
       NProgress.done();
       setLoading(false);
     }
-  }, [currentPage, selectedCategory, router]); // Add selectedCategory here as a dependency
+  }, [currentPage, selectedCategory, router]);
 
   useEffect(() => {
-    if (router?.query?.category) {
-      const foundCategory = offersCategories.find(
-        (item) => item.id === router.query.category
-      );
-      setSelectedCategory({
-        label: foundCategory?.name,
-        value: foundCategory?.id,
-      });
-    } else {
-      setSelectedCategory({ label: "All", value: "" });
-    }
-    if (router.isReady) {
+    if (selectedCategory !== null) {
       getOffers();
     }
-  }, [currentPage, router, findInitial]);
+  }, [selectedCategory, currentPage]);
 
   const getDefaultValue = () => ({
     label: selectedCategory?.label,
