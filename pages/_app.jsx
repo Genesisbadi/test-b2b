@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import ShowLazy from "@/lib/services/showLazy";
 import Header from "@/layout/partials/Header";
-
+import { isbot } from "isbot";
 export default function App({ Component, pageProps }) {
   const TenantScripts = dynamic(() =>
     import("@/layout/partials/TenantScripts")
@@ -18,6 +18,10 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     globalState.setState({ ready: true });
+
+    if (navigator.userAgent && isbot(navigator.userAgent)) {
+      globalState.setState({ showLazy: true });
+    }
   }, []);
 
   return (
