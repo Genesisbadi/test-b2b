@@ -151,7 +151,7 @@ export default function Menu({ ...props }) {
                 src={tenantDetails?.tenant_logo}
                 width={154}
                 height={50}
-                className={`h-full w-full transition-[all] ease-[ease] duration-[300ms] object-contain w-full   ${
+                className={`h-full transition-[all] ease-[ease] duration-[300ms] object-contain w-full   ${
                   process.env.NEXT_PUBLIC_TEMPLATE == 2
                     ? scrolled
                       ? "!max-w-[80px] !md:max-w-[100px]"
