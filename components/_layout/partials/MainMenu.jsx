@@ -69,25 +69,12 @@ export default function MainMenu({ parentNodes, ...props }) {
                     }`}
                   >
                     {item.label}
-<<<<<<< HEAD
-                    {process.env.NEXT_PUBLIC_MICROSITE_ID == 8 && (
-                      <>
-                        {item?.children && item?.children?.length > 0 && (
-                          <>
-                            <DropdownMenu
-                              parent={item}
-                              itemChildren={item.children}
-                            />
-                          </>
-                        )}
-=======
                     {item?.children && item?.children?.length > 0 && (
                       <>
                         <DropdownMenu
                           parent={item}
                           itemChildren={item.children}
                         />
->>>>>>> 875ce122c356a8435c53d57d4df434f5bcd8542d
                       </>
                     )}
                   </div>
