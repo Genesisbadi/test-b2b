@@ -14,6 +14,7 @@ export default function Slider({ block, mediaHandler }) {
   // const Slick = dynamic(() =>
   //   import("react-slick").then((module) => module.default)
   // );
+
   let { slider_items } = block.main;
   const showLazy = globalState((state) => state.showLazy);
 
