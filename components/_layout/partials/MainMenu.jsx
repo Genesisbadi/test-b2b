@@ -70,6 +70,14 @@ export default function MainMenu({ parentNodes, ...props }) {
                     }`}
                   >
                     {item.label}
+                    {item?.children && item?.children?.length > 0 && (
+                      <>
+                        <DropdownMenu
+                          parent={item}
+                          itemChildren={item.children}
+                        />
+                      </>
+                    )}
                   </div>
                 ) : (
                   <>
