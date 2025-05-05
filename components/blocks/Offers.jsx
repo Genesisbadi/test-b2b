@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -42,25 +42,9 @@ export default function Block({ block }) {
 
   const [findInitial, setFindInitial] = useState(offersCategories[0]);
 
-  const handleCategoryChange = (selectedOption) => {
-    NProgress.start();
-    setSelectedCategory({
-      label: selectedOption.label,
-      value: selectedOption.value,
-    });
+  const categoryInitialized = useRef(false);
 
-    router
-      .push(`/${router?.query?.id}?category=${selectedOption.value || ""}`)
-      .then(() => {
-        setSelectedCategory(e.target.getAttribute("id"));
-        setCurrentPage(1);
-        NProgress.done();
-      })
-      .catch(() => {
-        NProgress.done();
-      });
-  };
-
+  // Fetch offers function
   const getOffers = useCallback(async () => {
     setLoading(true);
     try {
@@ -72,41 +56,71 @@ export default function Block({ block }) {
         }&filter[sites.id]=${process.env.NEXT_PUBLIC_MICROSITE_ID}`
       );
 
-      const offersData = response?.data?.data.filter((item) => {
-        return !item?.attributes?.data?.main?.hide_list;
-      });
-
+      const offersData = response?.data?.data.filter(
+        (item) => !item?.attributes?.data?.main?.hide_list
+      );
       setOffers(offersData);
       setLoading(false);
       NProgress.done();
     } catch (error) {
-      console.error("Error fetching articles:", error);
+      console.error("Error fetching offers:", error);
       NProgress.done();
       setLoading(false);
     }
-  }, [currentPage, selectedCategory, router]); // Add selectedCategory here as a dependency
+  }, [currentPage, selectedCategory, setOffers, setLoading]);
 
   useEffect(() => {
-    if (router?.query?.category) {
+    if (router.isReady && !categoryInitialized.current) {
+      categoryInitialized.current = true;
+      const categoryId = router.query.category;
+
+      if (categoryId === undefined) return;
+
       const foundCategory = offersCategories.find(
-        (item) => item.id === router.query.category
+        (item) => item.id === categoryId
       );
-      setSelectedCategory({
-        label: foundCategory?.name,
-        value: foundCategory?.id,
-      });
-    } else {
-      setSelectedCategory({ label: "All", value: "" });
+
+      if (foundCategory) {
+        setSelectedCategory({
+          label: foundCategory.name,
+          value: foundCategory.id,
+        });
+      } else {
+        setSelectedCategory({ label: "All", value: "" });
+      }
     }
-    if (router.isReady) {
+  }, [router.isReady, router.query.category, offersCategories]);
+
+  useEffect(() => {
+    if (categoryInitialized.current && selectedCategory) {
       getOffers();
     }
-  }, [currentPage, router, findInitial]);
+  }, [selectedCategory, currentPage, getOffers]);
+
+  // Handle category change
+  const handleCategoryChange = (selectedOption) => {
+    NProgress.start();
+    setSelectedCategory({
+      label: selectedOption.label,
+      value: selectedOption.value,
+    });
+
+    router
+      .push(`/${router?.query?.id}?category=${selectedOption.value || ""}`)
+      .then(() => {
+        setCurrentPage(1);
+        NProgress.done();
+      })
+      .catch(() => {
+        NProgress.done();
+      });
+  };
 
   const getDefaultValue = () => ({
     label: selectedCategory?.label,
     value: selectedCategory?.value,
   });
+  
 
   return (
     <section className="bg-[#F1F1F1] pb-[30px]">

@@ -50,7 +50,11 @@ export default function Menu({ ...props }) {
     <>
       <header
         id="header"
-        className={`sticky top-0 z-[100] shadow-[0_2px_2px_-2px_rgba(0,0,0,.15)] min-h-[61px] flex flex-col justify-center items-end
+        className={`sticky top-0 z-[100] shadow-[0_2px_2px_-2px_rgba(0,0,0,.15)] ${
+          process.env.NEXT_PUBLIC_MICROSITE_ID == 7
+            ? "min-h-[71px]"
+            : "min-h-[61px]"
+        } flex flex-col justify-center items-end
           ${
             process.env.NEXT_PUBLIC_MICROSITE_ID == 7
               ? "!bg-[#413A60]"
@@ -117,7 +121,9 @@ export default function Menu({ ...props }) {
           </>
         )}
         <div
-          className={`flex w-full items-center justify-between ${
+          className={`${
+            process.env.NEXT_PUBLIC_MICROSITE_ID == 7 ? "min-h-[71px]" : ""
+          } flex w-full items-center justify-between ${
             process.env.NEXT_PUBLIC_TEMPLATE != 1 ? "py-[10px] pr-[2px]" : ""
           }`}
         >
@@ -145,7 +151,7 @@ export default function Menu({ ...props }) {
                 src={tenantDetails?.tenant_logo}
                 width={154}
                 height={50}
-                className={`h-full w-full transition-[all] ease-[ease] duration-[300ms] object-contain w-full   ${
+                className={`h-full transition-[all] ease-[ease] duration-[300ms] object-contain w-full   ${
                   process.env.NEXT_PUBLIC_TEMPLATE == 2
                     ? scrolled
                       ? "!max-w-[80px] !md:max-w-[100px]"
