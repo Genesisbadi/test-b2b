@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import "slick-carousel/slick/slick.css";
+import Slick from "react-slick";
 import globalState from "@/lib/store/globalState";
 import dynamic from "next/dynamic";
 import { useEffect, useState, useRef } from "react";
@@ -10,9 +11,9 @@ export default function Slider({ block, mediaHandler }) {
   const [isMobile, setIsMobile] = useState(useMobileDetector());
   const linkElementRef = useRef(null);
 
-  const Slick = dynamic(() =>
-    import("react-slick").then((module) => module.default)
-  );
+  // const Slick = dynamic(() =>
+  //   import("react-slick").then((module) => module.default)
+  // );
   let { slider_items } = block.main;
   const showLazy = globalState((state) => state.showLazy);
 
