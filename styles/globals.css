@@ -28,6 +28,9 @@ body {
   position: absolute;
   bottom: -5px;
 }
+.st-btn {
+  display: flex !important;
+}
 
 .font-domine {
   font-family: "Domine", sans-serif;
@@ -86,13 +89,13 @@ body {
     height: auto;
     background: #f5f5f5;
   }
-  
+
   .slide-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
-  
+
   .section-accordion {
     display: flex;
     flex-direction: column;
