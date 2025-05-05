@@ -2,14 +2,13 @@ import Link from "next/link";
 
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import DropdownArrow from "@/components/icons/DropdownArrow";
 
 export default function MainMenu({ parentNodes, ...props }) {
   const router = useRouter();
 
-  // const DropdownArrow = dynamic(() =>
-  //   import("@/components/icons/DropdownArrow")
-  // );
+  const DropdownArrow = dynamic(() =>
+    import("@/components/icons/DropdownArrow")
+  );
 
   const DropdownMenu = ({ ...props }) => {
     const { parent, itemChildren } = props;
@@ -70,6 +69,27 @@ export default function MainMenu({ parentNodes, ...props }) {
                     }`}
                   >
                     {item.label}
+<<<<<<< HEAD
+                    {process.env.NEXT_PUBLIC_MICROSITE_ID == 8 && (
+                      <>
+                        {item?.children && item?.children?.length > 0 && (
+                          <>
+                            <DropdownMenu
+                              parent={item}
+                              itemChildren={item.children}
+                            />
+                          </>
+                        )}
+=======
+                    {item?.children && item?.children?.length > 0 && (
+                      <>
+                        <DropdownMenu
+                          parent={item}
+                          itemChildren={item.children}
+                        />
+>>>>>>> 875ce122c356a8435c53d57d4df434f5bcd8542d
+                      </>
+                    )}
                   </div>
                 ) : (
                   <>
