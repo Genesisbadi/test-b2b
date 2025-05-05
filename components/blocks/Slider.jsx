@@ -10,9 +10,10 @@ export default function Slider({ block, mediaHandler }) {
   const [isMobile, setIsMobile] = useState(useMobileDetector());
   const linkElementRef = useRef(null);
 
-  const Slick = dynamic(() =>
-    import("react-slick").then((module) => module.default)
-  );
+  // const Slick = dynamic(() =>
+  //   import("react-slick").then((module) => module.default)
+  // );
+
   let { slider_items } = block.main;
   const showLazy = globalState((state) => state.showLazy);
 
