@@ -32,7 +32,7 @@ export default function Description({ block }) {
 
   return (
     <section className="bg-[#f1f1f1] pt-[10px] sm:pt-[30px] pb-[30px]">
-      {/* {!showLazy ? (
+      {!showLazy ? (
         <div className="container">
           {Array.from({ length: 20 }, (_, index) => (
             <div
@@ -54,7 +54,7 @@ export default function Description({ block }) {
           } container`}
           dangerouslySetInnerHTML={{ __html: description }}
         />
-      )} */}
+      )}
       <div
         className={`${
           process.env.NEXT_PUBLIC_MICROSITE_ID == 7

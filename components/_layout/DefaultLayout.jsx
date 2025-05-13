@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import globalState from "@/lib/store/globalState";
+import Menu from "./partials/Menu";
 const FormGenericNotification = dynamic(() =>
   import("../partials/notifications/FormGenericNotification")
 );
@@ -10,10 +11,10 @@ const NextTopLoader = dynamic(() =>
 export default function DefaultLayout(props) {
   const { page, blocks } = props;
   const showLazy = globalState((state) => state.showLazy);
-  const Menu = () => {
-    const Component = dynamic(() => import("@/layout/partials/Menu"));
-    return <Component />;
-  };
+  // const Menu = () => {
+  //   const Component = dynamic(() => import("@/layout/partials/Menu"));
+  //   return <Component />;
+  // };
 
   const BookingForm = dynamic(() =>
     import("@/components/partials/forms/BookingForm")
@@ -33,7 +34,7 @@ export default function DefaultLayout(props) {
       {showLazy && process.env.NEXT_PUBLIC_TEMPLATE == 2 && (
         <BookingForm page={page} blocks={blocks} />
       )}
-      <main id="main-content" className="main-content min-h-screen">
+      <main id="main-content" className="main-content">
         {props.children}
       </main>
 

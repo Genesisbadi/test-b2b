@@ -27,6 +27,7 @@ export default function Menu({ ...props }) {
   const Menu = dynamic(() =>
     isMobile ? import("./MainMenuMobile") : import("./MainMenu")
   );
+
   const DropdownArrow = dynamic(() =>
     import("@/components/icons/DropdownArrow")
   );
