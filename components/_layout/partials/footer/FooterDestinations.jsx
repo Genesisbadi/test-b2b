@@ -104,7 +104,7 @@ export default function FooterDestinations({}) {
   };
   return (
     <>
-      {destinationsEntries.length > 0 && (
+      {/* {destinationsEntries.length > 0 && (
         <SectionAccordion
           title="Exciting Destinations"
           childrenClassname="pb-0"
@@ -167,7 +167,7 @@ export default function FooterDestinations({}) {
             </Slick>
           </section>
         </SectionAccordion>
-      )}
+      )} */}
     </>
   );
 }
