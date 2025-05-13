@@ -31,7 +31,7 @@ export default function FooterJuicer() {
 
   return (
     <>
-      {router.asPath === "/" && (
+      {/* {router.asPath === "/" && (
         <SectionAccordion title={`Instagram`}>
           <section className="py-[30px]">
             <div className="container">
@@ -71,7 +71,7 @@ export default function FooterJuicer() {
             </div>
           </section>
         </SectionAccordion>
-      )}
+      )} */}
     </>
   );
 }
