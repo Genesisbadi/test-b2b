@@ -81,134 +81,133 @@ export default function FooterNewsletter() {
   }
 
   return (
-    // <SectionAccordion title={title}>
-    //   <section className="footer-newsletter md:py-[40px]">
-    //     {isModalShow && <NewsletterPopup />}
-    //     <h2
-    //       className={`hidden md:block text-center tracking-[1px] text-[25px] mb-[30px] ${
-    //         process.env.NEXT_PUBLIC_TEMPLATE == 1 ? "font-tenor" : " "
-    //       } ${
-    //         process.env.NEXT_PUBLIC_MICROSITE_ID == 7
-    //           ? "font-effra text-[#05A6D0]"
-    //           : "text-primary"
-    //       }`}
-    //     >
-    //       {title}
-    //     </h2>
+    <SectionAccordion title={title}>
+      <section className="footer-newsletter md:py-[40px]">
+        {isModalShow && <NewsletterPopup />}
+        <h2
+          className={`hidden md:block text-center tracking-[1px] text-[25px] mb-[30px] ${
+            process.env.NEXT_PUBLIC_TEMPLATE == 1 ? "font-tenor" : " "
+          } ${
+            process.env.NEXT_PUBLIC_MICROSITE_ID == 7
+              ? "font-effra text-[#05A6D0]"
+              : "text-primary"
+          }`}
+        >
+          {title}
+        </h2>
 
-    //     <div className="container md:!max-w-[550px]">
-    //       {process.env.NEXT_PUBLIC_MICROSITE_ID == 7 ? (
-    //         <p className="text-[#555] md:text-center font-circular">
-    //           Pop your email below to get in on the action—unlock early access,
-    //           exclusive perks, and all the buzz-worthy updates.
-    //         </p>
-    //       ) : (
-    //         <p className="text-[#555] md:text-center">
-    //           Enter your email address below to receive our newsletter.
-    //         </p>
-    //       )}
+        <div className="container md:!max-w-[550px]">
+          {process.env.NEXT_PUBLIC_MICROSITE_ID == 7 ? (
+            <p className="text-[#555] md:text-center font-circular">
+              Pop your email below to get in on the action—unlock early access,
+              exclusive perks, and all the buzz-worthy updates.
+            </p>
+          ) : (
+            <p className="text-[#555] md:text-center">
+              Enter your email address below to receive our newsletter.
+            </p>
+          )}
 
-    //       <form
-    //         id="newsletter-form"
-    //         className="max-w-[550px] mx-auto md:max-w-auto"
-    //         onSubmit={handleSubmit}
-    //       >
-    //         <div className="flex flex-wrap items-center mt-[30px]">
-    //           <input
-    //             id="email"
-    //             type="text"
-    //             placeholder="Email Address"
-    //             className={`w-full sm:w-[calc(100%-150px)] text-primary border-[1px]  px-[15px] py-[10px] mb-[15px] sm:mb-0 h-[60px] ${
-    //               errors.email ? "border-[#FF4C60]" : "border-[#ced4da]"
-    //             } `}
-    //           />
-    //           <button
-    //             type="submit"
-    //             className={`w-full uppercase group flex items-center justify-center text-uppercase sm:w-[150px] text-secondary border-secondary border px-[15px] py-[15px] h-[60px] ${
-    //               process.env.NEXT_PUBLIC_MICROSITE_ID == 7
-    //                 ? "hover:bg-[#d51a69] hover:border-[#d51a69] hover:text-[#fff]"
-    //                 : "hover:bg-secondary hover:text-[#fff]"
-    //             } transition-all duration-300 ease-in-out ${
-    //               isSending
-    //                 ? "cursor-not-allowed opacity-[.5]"
-    //                 : "cursor-pointer"
-    //             }`}
-    //             disabled={isSending}
-    //           >
-    //             {isSending && (
-    //               <svg
-    //                 className="animate-spin -ml-1 mr-3 h-5 w-5 text-primary group-hover:text-white"
-    //                 xmlns="http://www.w3.org/2000/svg"
-    //                 fill="none"
-    //                 viewBox="0 0 24 24"
-    //               >
-    //                 <circle
-    //                   className="opacity-25"
-    //                   cx="12"
-    //                   cy="12"
-    //                   r="10"
-    //                   stroke="currentColor"
-    //                   strokeWidth="4"
-    //                 ></circle>
-    //                 <path
-    //                   className="opacity-75"
-    //                   fill="currentColor"
-    //                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-    //                 ></path>
-    //               </svg>
-    //             )}
-    //             {isSending ? "Sending..." : "Submit"}
-    //           </button>
+          <form
+            id="newsletter-form"
+            className="max-w-[550px] mx-auto md:max-w-auto"
+            onSubmit={handleSubmit}
+          >
+            <div className="flex flex-wrap items-center mt-[30px]">
+              <input
+                id="email"
+                type="text"
+                placeholder="Email Address"
+                className={`w-full sm:w-[calc(100%-150px)] text-primary border-[1px]  px-[15px] py-[10px] mb-[15px] sm:mb-0 h-[60px] ${
+                  errors.email ? "border-[#FF4C60]" : "border-[#ced4da]"
+                } `}
+              />
+              <button
+                type="submit"
+                className={`w-full uppercase group flex items-center justify-center text-uppercase sm:w-[150px] text-secondary border-secondary border px-[15px] py-[15px] h-[60px] ${
+                  process.env.NEXT_PUBLIC_MICROSITE_ID == 7
+                    ? "hover:bg-[#d51a69] hover:border-[#d51a69] hover:text-[#fff]"
+                    : "hover:bg-secondary hover:text-[#fff]"
+                } transition-all duration-300 ease-in-out ${
+                  isSending
+                    ? "cursor-not-allowed opacity-[.5]"
+                    : "cursor-pointer"
+                }`}
+                disabled={isSending}
+              >
+                {isSending && (
+                  <svg
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-primary group-hover:text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                )}
+                {isSending ? "Sending..." : "Submit"}
+              </button>
 
-    //           {errors.email && (
-    //             <span className="text-red-500 text-[12px] mt-[15px] block">
-    //               {errors.email}
-    //             </span>
-    //           )}
-    //         </div>
-    //         <div className="text-[#555] text-[12px] mt-[15px] relative">
-    //           <input
-    //             className={`absolute top-[8px] left-0 overflow-hidden cursor-pointer`}
-    //             type="checkbox"
-    //             name="agree"
-    //             id="agree"
-    //           />
-    //           <label
-    //             htmlFor="agree"
-    //             className="pl-[20px] block leading-4  select-none cursor-pointer"
-    //           >
-    //             I agree to the {tenantDetails?.site_name}{" "}
-    //             <span>
-    //               <Link
-    //                 className="text-primary hover:underline"
-    //                 href="/legal-information"
-    //                 target="_blank"
-    //               >
-    //                 Terms and Conditions
-    //               </Link>
-    //             </span>{" "}
-    //             and have read the{" "}
-    //             <span>
-    //               <Link
-    //                 className="text-primary hover:underline"
-    //                 href={tenantDetails?.privacy_link || "#"}
-    //                 target="_blank"
-    //               >
-    //                 Privacy Policy
-    //               </Link>
-    //               .
-    //             </span>
-    //           </label>
-    //           {errors.agree && (
-    //             <span className="text-red-500 text-[12px] mt-[5px] inline-block">
-    //               {errors.agree}
-    //             </span>
-    //           )}
-    //         </div>
-    //       </form>
-    //     </div>
-    //   </section>
-    // </SectionAccordion>
-    <></>
+              {errors.email && (
+                <span className="text-red-500 text-[12px] mt-[15px] block">
+                  {errors.email}
+                </span>
+              )}
+            </div>
+            <div className="text-[#555] text-[12px] mt-[15px] relative">
+              <input
+                className={`absolute top-[8px] left-0 overflow-hidden cursor-pointer`}
+                type="checkbox"
+                name="agree"
+                id="agree"
+              />
+              <label
+                htmlFor="agree"
+                className="pl-[20px] block leading-4  select-none cursor-pointer"
+              >
+                I agree to the {tenantDetails?.site_name}{" "}
+                <span>
+                  <Link
+                    className="text-primary hover:underline"
+                    href="/legal-information"
+                    target="_blank"
+                  >
+                    Terms and Conditions
+                  </Link>
+                </span>{" "}
+                and have read the{" "}
+                <span>
+                  <Link
+                    className="text-primary hover:underline"
+                    href={tenantDetails?.privacy_link || "#"}
+                    target="_blank"
+                  >
+                    Privacy Policy
+                  </Link>
+                  .
+                </span>
+              </label>
+              {errors.agree && (
+                <span className="text-red-500 text-[12px] mt-[5px] inline-block">
+                  {errors.agree}
+                </span>
+              )}
+            </div>
+          </form>
+        </div>
+      </section>
+    </SectionAccordion>
   );
 }
