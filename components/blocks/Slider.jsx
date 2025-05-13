@@ -141,97 +141,96 @@ export default function Slider({ block, mediaHandler }) {
   };
 
   return (
-    // <div className="block-slider slider relative">
-    //   {slider_items && slider_items.length > 0 && (
-    //     <Slick {...settings}>
-    //       {slider_items?.map((item, index) => {
-    //         const desktop_image = getCloudfrontUrl({
-    //           src: item?.image_desktop,
-    //           width: 1920,
-    //           height: 812,
-    //           quality: 75,
-    //         });
+    <div className="block-slider slider relative">
+      {slider_items && slider_items.length > 0 && (
+        <Slick {...settings}>
+          {slider_items?.map((item, index) => {
+            const desktop_image = getCloudfrontUrl({
+              src: item?.image_desktop,
+              width: 1920,
+              height: 812,
+              quality: 75,
+            });
 
-    //         const mobile_image = getCloudfrontUrl({
-    //           src: item?.image_mobile,
-    //           width: 1920,
-    //           height: 812,
-    //           quality: 75,
-    //         });
+            const mobile_image = getCloudfrontUrl({
+              src: item?.image_mobile,
+              width: 1920,
+              height: 812,
+              quality: 75,
+            });
 
-    //         return (
-    //           <div className="w-full relative" key={index}>
-    //             <span className="absolute h-full w-full top-0 left-0 bg-[#000] opacity-[.3] z-[1]"></span>
-    //             <picture>
-    //               <source media="(min-width: 415px)" srcSet={desktop_image} />
-    //               <source media="(max-width: 414px)" srcSet={mobile_image} />
-    //               <Image
-    //                 src={mobile_image}
-    //                 title={item?.title || "Slider Image"}
-    //                 alt={item?.title || "Slider Image"}
-    //                 width={1920}
-    //                 height={750}
-    //                 className="absolute z-[-1] top-0 left-0 h-full w-full object-cover"
-    //                 loading="eager"
-    //               />
-    //             </picture>
+            return (
+              <div className="w-full relative" key={index}>
+                <span className="absolute h-full w-full top-0 left-0 bg-[#000] opacity-[.3] z-[1]"></span>
+                <picture>
+                  <source media="(min-width: 415px)" srcSet={desktop_image} />
+                  <source media="(max-width: 414px)" srcSet={mobile_image} />
+                  <Image
+                    src={mobile_image}
+                    title={item?.title || "Slider Image"}
+                    alt={item?.title || "Slider Image"}
+                    width={1920}
+                    height={750}
+                    className="absolute z-[-1] top-0 left-0 h-full w-full object-cover"
+                    loading="eager"
+                  />
+                </picture>
 
-    //             <div
-    //               className={`leading-normal py-[80px] mx-w-[1200px] lg:py-[50px] min-h-[calc(100dvh-67px)] xl:min-h-[600px] xl:h-[560px] 3xl:h-[812px] px-[30px] md:px-[100px] lg:px-[150px] w-full flex flex-col ${
-    //                 item?.position === "bottom left"
-    //                   ? "justify-end items-start"
-    //                   : item?.position === "center"
-    //                   ? "justify-center items-center"
-    //                   : "justify-center items-center"
-    //               } text-white relative z-[3]`}
-    //             >
-    //               {item?.title && (
-    //                 <div
-    //                   className={`${
-    //                     item?.position === "bottom left"
-    //                       ? "text-start"
-    //                       : item?.position === "center"
-    //                       ? "text-center"
-    //                       : "text-center"
-    //                   } leading-[49px] text-[30px] sm:text-[35px] lg:text-[42px] text-white relative z-[3] ${
-    //                     process.env.NEXT_PUBLIC_MICROSITE_ID == 7
-    //                       ? "font-effra"
-    //                       : "font-tenor"
-    //                   } ${
-    //                     item?.description || item?.url
-    //                       ? "mb-[15px] md:mb-[30px]"
-    //                       : ""
-    //                   } `}
-    //                 >
-    //                   {item?.title}
-    //                 </div>
-    //               )}
-    //               {item?.description && (
-    //                 <div
-    //                   className="mb-[15px] text-center"
-    //                   dangerouslySetInnerHTML={{ __html: item?.description }}
-    //                 />
-    //               )}
+                <div
+                  className={`leading-normal py-[80px] mx-w-[1200px] lg:py-[50px] min-h-[calc(100dvh-67px)] xl:min-h-[600px] xl:h-[560px] 3xl:h-[812px] px-[30px] md:px-[100px] lg:px-[150px] w-full flex flex-col ${
+                    item?.position === "bottom left"
+                      ? "justify-end items-start"
+                      : item?.position === "center"
+                      ? "justify-center items-center"
+                      : "justify-center items-center"
+                  } text-white relative z-[3]`}
+                >
+                  {item?.title && (
+                    <div
+                      className={`${
+                        item?.position === "bottom left"
+                          ? "text-start"
+                          : item?.position === "center"
+                          ? "text-center"
+                          : "text-center"
+                      } leading-[49px] text-[30px] sm:text-[35px] lg:text-[42px] text-white relative z-[3] ${
+                        process.env.NEXT_PUBLIC_MICROSITE_ID == 7
+                          ? "font-effra"
+                          : "font-tenor"
+                      } ${
+                        item?.description || item?.url
+                          ? "mb-[15px] md:mb-[30px]"
+                          : ""
+                      } `}
+                    >
+                      {item?.title}
+                    </div>
+                  )}
+                  {item?.description && (
+                    <div
+                      className="mb-[15px] text-center"
+                      dangerouslySetInnerHTML={{ __html: item?.description }}
+                    />
+                  )}
 
-    //               {item?.url && (
-    //                 <Link
-    //                   className="text-[14px] text-center uppercase border px-[30px] py-[10px] inline-block border-[#fff] hover:text-primary hover:bg-[#fff] transition-all duration-300 ease-in-out "
-    //                   href={item?.url}
-    //                   prefetch={false}
-    //                 >
-    //                   {item?.button_label ||
-    //                     (process.env.NEXT_PUBLIC_TEMPLATE == 1
-    //                       ? "Discover More"
-    //                       : "Learn More")}
-    //                 </Link>
-    //               )}
-    //             </div>
-    //           </div>
-    //         );
-    //       })}
-    //     </Slick>
-    //   )}
-    // </div>
-    <></>
+                  {item?.url && (
+                    <Link
+                      className="text-[14px] text-center uppercase border px-[30px] py-[10px] inline-block border-[#fff] hover:text-primary hover:bg-[#fff] transition-all duration-300 ease-in-out "
+                      href={item?.url}
+                      prefetch={false}
+                    >
+                      {item?.button_label ||
+                        (process.env.NEXT_PUBLIC_TEMPLATE == 1
+                          ? "Discover More"
+                          : "Learn More")}
+                    </Link>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </Slick>
+      )}
+    </div>
   );
 }

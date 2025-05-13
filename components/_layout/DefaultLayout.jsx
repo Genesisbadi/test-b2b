@@ -33,7 +33,7 @@ export default function DefaultLayout(props) {
       {showLazy && process.env.NEXT_PUBLIC_TEMPLATE == 2 && (
         <BookingForm page={page} blocks={blocks} />
       )}
-      <main id="main-content" className="main-content">
+      <main id="main-content" className="main-content min-h-screen">
         {props.children}
       </main>
 
