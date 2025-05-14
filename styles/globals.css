@@ -58,6 +58,9 @@ body {
 .carousel-gallery .slick-track {
   display: flex;
 }
+.slick-track {
+  display: none;
+}
 @layer utilities {
   .block-slider .slick-dots {
     position: absolute;
