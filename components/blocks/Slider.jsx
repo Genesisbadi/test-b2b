@@ -21,7 +21,7 @@ export default function Slider({ block, mediaHandler }) {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 2000);
   }, []);
 
   let { slider_items } = block.main;
@@ -149,8 +149,6 @@ export default function Slider({ block, mediaHandler }) {
     ],
   };
 
-  console.log(slider_items, "slider_items");
-
   const desktop_image = getCloudfrontUrl({
     src: slider_items[0]?.image_desktop,
     width: 1920,
@@ -172,7 +170,7 @@ export default function Slider({ block, mediaHandler }) {
           {/* <div className="w-full min-h-[750px] md:min-h-[812px] bg-gray-400"></div> */}
 
           <div>
-            <div className="w-full relative min-h-[750px] md:min-h-[812px]">
+            <div className="w-full relative">
               <span className="absolute h-full w-full top-0 left-0 bg-[#000] opacity-[.3] z-[1]"></span>
               <picture>
                 <source media="(min-width: 415px)" srcSet={desktop_image} />
@@ -264,10 +262,7 @@ export default function Slider({ block, mediaHandler }) {
                 });
 
                 return (
-                  <div
-                    className="w-full relative min-h-[750px] md:min-h-[812px]"
-                    key={index}
-                  >
+                  <div className="w-full relative" key={index}>
                     <span className="absolute h-full w-full top-0 left-0 bg-[#000] opacity-[.3] z-[1]"></span>
                     <picture>
                       <source
